@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-    const { budget } = useContext(AppContext);
+    const { budget, expenses } = useContext(AppContext);
     const [newBudget, setNewBudget] = useState(budget);
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleBudgetChange = (event) => {
         const newBudgetValue = event.target.value;
-        if (parseInt(newBudgetValue) > 20000) {
-            setErrorMessage('The budget cannot exceed £20,000.');
+        if (parseInt(newBudgetValue) < getTotalExpenses(expenses)) {
+            setErrorMessage('Budget cannot be lower than total expenses.');
         } else {
             setErrorMessage('');
             setNewBudget(newBudgetValue);
@@ -32,6 +32,12 @@ const Budget = () => {
             )}
         </div>
     );
+};
+
+const getTotalExpenses = (expenses) => {
+    return expenses.reduce((total, item) => {
+        return total + item.cost;
+    }, 0);
 };
 
 export default Budget;
