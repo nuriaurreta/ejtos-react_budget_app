@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-    const { budget, expenses, currency, dispatch } = useContext(AppContext);
+    const { budget, expenses, currency, } = useContext(AppContext);
     const [newBudget, setNewBudget] = useState(budget);
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -14,11 +14,6 @@ const Budget = () => {
             setErrorMessage('');
             setNewBudget(newBudgetValue);
         }
-    };
-
-    const handleCurrencyChange = (event) => {
-        const newCurrency = event.target.value;
-        dispatch({ type: 'CHG_CURRENCY', payload: newCurrency });
     };
 
     return (
@@ -37,27 +32,8 @@ const Budget = () => {
                     </div>
                 )}
             </div>
-            <div className="mt-2">
-                <label htmlFor="currencySelect">Currency: </label>
-                <select id="currencySelect" value={currency} onChange={handleCurrencyChange} className="currency-select" style={dropdownStyle}>
-                    <option value="$" className="option">Dollar ($)</option>
-                    <option value="£" className="option">Pound (£)</option>
-                    <option value="€" className="option">Euro (€)</option>
-                    <option value="₹" className="option">Rupee (₹)</option>
-                </select>
-            </div>
         </div>
     );
-};
-
-const dropdownStyle = {
-    padding: '8px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    backgroundColor: '#fff',
-    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-    minWidth: '150px',
-    marginTop: '5px',
 };
 
 const getTotalExpenses = (expenses) => {
