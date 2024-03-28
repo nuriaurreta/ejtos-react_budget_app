@@ -37,17 +37,27 @@ const Budget = () => {
                     </div>
                 )}
             </div>
-            <div className='mt-2'>
-                <label htmlFor="currencySelect">Select Currency: </label>
-                <select id="currencySelect" value={currency} onChange={handleCurrencyChange}>
-                    <option value="$">Dollar ($)</option>
-                    <option value="£">Pound (£)</option>
-                    <option value="€">Euro (€)</option>
-                    <option value="₹">Rupee (₹)</option>
+            <div className="mt-2">
+                <label htmlFor="currencySelect">Currency: </label>
+                <select id="currencySelect" value={currency} onChange={handleCurrencyChange} className="currency-select" style={dropdownStyle}>
+                    <option value="$" className="option">Dollar ($)</option>
+                    <option value="£" className="option">Pound (£)</option>
+                    <option value="€" className="option">Euro (€)</option>
+                    <option value="₹" className="option">Rupee (₹)</option>
                 </select>
             </div>
         </div>
     );
+};
+
+const dropdownStyle = {
+    padding: '8px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    backgroundColor: '#fff',
+    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+    minWidth: '150px',
+    marginTop: '5px',
 };
 
 const getTotalExpenses = (expenses) => {

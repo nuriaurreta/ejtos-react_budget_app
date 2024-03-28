@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.currency-select {
+    font-size: 16px;
+    padding: 6px 50px 6px 2px;
+    border: 1px;
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: rgb(204, 251, 198);
+    color: #333;
+    outline: none;
+}
+
+.option {
+    background-color: #fff; /* Fondo blanco */
+    color: #333; /* Texto oscuro */
+    padding: 8px 12px; /* Espaciado interior */
+    border-radius: 3px; /* Bordes redondeados */
+}
+
+.option:hover {
+    background-color: #f0f0f0; /* Cambiar el color de fondo al pasar el mouse */
+}
+
+.option:selected {
+    background-color: #e0e0e0; /* Cambiar el color de fondo de la opción seleccionada */
+}
